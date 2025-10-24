@@ -43,7 +43,7 @@ export class WiredImage extends WiredBase {
         path {
           stroke-width: 1;
         }
-      `
+      `,
     ];
   }
 
@@ -97,7 +97,7 @@ export class WiredImage extends WiredBase {
     const elev = Math.min(Math.max(1, this.elevation), 5);
     const s = {
       width: size[0] - ((elev - 1) * 2),
-      height: size[1] - ((elev - 1) * 2)
+      height: size[1] - ((elev - 1) * 2),
     };
     rectangle(svg, 2, 2, s.width - 4, s.height - 4, this.seed);
     for (let i = 1; i < elev; i++) {

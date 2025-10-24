@@ -55,7 +55,7 @@ export class WiredCheckbox extends WiredBase {
       #container.focused {
         --wired-checkbox-default-swidth: 1.5;
       }
-      `
+      `,
     ];
   }
 

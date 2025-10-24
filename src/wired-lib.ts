@@ -7,7 +7,7 @@ import {
   polygon as roughPolygon,
   arc as roughArc,
   doubleLineFillOps,
-  generateEllipseParams
+  generateEllipseParams,
 } from 'roughjs/bin/renderer';
 import { ZigZagFiller } from 'roughjs/bin/fillers/zigzag-filler';
 import { RenderHelper } from 'roughjs/bin/fillers/filler-interface';
@@ -26,7 +26,7 @@ const fillHelper: RenderHelper = {
   },
   doubleLineOps(x1: number, y1: number, x2: number, y2: number, o: ResolvedOptions): Op[] {
     return doubleLineFillOps(x1, y1, x2, y2, o);
-  }
+  },
 };
 
 function options(seed: number): ResolvedOptions {
@@ -46,10 +46,11 @@ function options(seed: number): ResolvedOptions {
     dashOffset: -1,
     dashGap: -1,
     zigzagOffset: 0,
-    combineNestedSvgPaths: false,
     disableMultiStroke: false,
     disableMultiStrokeFill: false,
-    seed
+    preserveVertices: false,
+    fillShapeRoughnessGain: 0,
+    seed,
   };
 }
 
@@ -119,7 +120,7 @@ export function arc(parent: SVGElement, x: number, y: number, width: number, hei
 
 export function hachureFill(points: Point[], seed: number): SVGElement {
   const hf = new ZigZagFiller(fillHelper);
-  const ops = hf.fillPolygon(points, options(seed));
+  const ops = hf.fillPolygons([points], options(seed));
   return createPathNode(ops, null);
 }
 
@@ -131,7 +132,7 @@ export function hachureEllipseFill(cx: number, cy: number, width: number, height
   while (angle <= (Math.PI * 2)) {
     vertices.push([
       cx + ep.rx * Math.cos(angle),
-      cy + ep.ry * Math.sin(angle)
+      cy + ep.ry * Math.sin(angle),
     ]);
     angle += ep.increment;
   }

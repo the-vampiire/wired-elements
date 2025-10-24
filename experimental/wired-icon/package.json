@@ -30,7 +30,7 @@
     "url": "https://github.com/apennamen/wired-elements/issues"
   },
   "dependencies": {
-    "lit-element": "^2.3.1",
+    "lit": "^3.1.0",
     "wired-lib": "^2.0.0"
   }
 }

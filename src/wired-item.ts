@@ -77,7 +77,7 @@ export class WiredItem extends WiredBase {
           opacity: 0.05;
         }
       }
-      `
+      `,
     ];
   }
 
@@ -99,7 +99,7 @@ export class WiredItem extends WiredBase {
       [0, 0],
       [size[0], 0],
       [size[0], size[1]],
-      [0, size[1]]
+      [0, size[1]],
     ], this.seed);
     svg.appendChild(g);
   }

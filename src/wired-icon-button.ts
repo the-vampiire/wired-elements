@@ -54,7 +54,7 @@ export class WiredIconButton extends WiredBase {
           position: relative;
           font-size: var(--wired-icon-size, 24px);
         }
-      `
+      `,
     ];
   }
 

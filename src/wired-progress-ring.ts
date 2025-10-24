@@ -43,7 +43,7 @@ export class WiredProgressRing extends WiredBase {
         justify-content: center;
         justify-items: center;
       }
-      `
+      `,
     ];
   }
 

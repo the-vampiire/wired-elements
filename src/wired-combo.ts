@@ -198,7 +198,7 @@ export class WiredCombo extends LitElement {
     const poly = polygon(svg, [
       [dropx + 8, 5 + dropOffset],
       [dropx + 26, 5 + dropOffset],
-      [dropx + 17, dropOffset + Math.min(textBounds.height, 18)]
+      [dropx + 17, dropOffset + Math.min(textBounds.height, 18)],
     ], this.seed);
     poly.style.fill = 'currentColor';
     poly.style.pointerEvents = this.disabled ? 'none' : 'auto';
@@ -249,7 +249,7 @@ export class WiredCombo extends LitElement {
       if (selectedItem) {
         this.value = {
           value: selectedItem.value || '',
-          text: selectedItem.textContent || ''
+          text: selectedItem.textContent || '',
         };
       } else {
         this.value = undefined;

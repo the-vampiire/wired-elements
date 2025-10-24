@@ -207,7 +207,7 @@ export class WiredCalendar extends LitElement {
         ${this.weekdays_short
         .map((d) =>
           html`<th style="width: ${this.tblColWidth};">${this.initials ? d[0] : d}</th>
-            `
+            `,
         )
       }
       </tr>
@@ -235,13 +235,13 @@ export class WiredCalendar extends LitElement {
                             <td .className="${d.disabled ? 'disabled' : (d.dimmed ? 'dimmed' : '')}"
                                 value="${d.disabled ? '' : d.value}">${d.text}</td>
                         `}
-                    `
+                    `,
 
                 // This blank space left on purpose for clarity
 
               )
             }${ /* End `weekDays` map loop */ ''}
-            </tr>`
+            </tr>`,
         )
       }${ /* End `weeks` map loop */ ''}
     </table>
@@ -380,7 +380,7 @@ export class WiredCalendar extends LitElement {
       week.forEach((day: CalendarCell) => {
         // Set calendar day `selected` according to user's `this.selected`
         day.selected = this.selected && (day.value === this.selected) || false;
-      })
+      }),
     );
     this.requestUpdate();
   }
@@ -396,7 +396,7 @@ export class WiredCalendar extends LitElement {
     const limits = this.getBoundingClientRect();
     return {
       width: limits.width > 180 ? limits.width : 320,
-      height: limits.height > 180 ? limits.height : 320
+      height: limits.height > 180 ? limits.height : 320,
     };
   }
 
@@ -461,7 +461,7 @@ export class WiredCalendar extends LitElement {
           text: day.getDate().toString(),
           selected: formatedDate === this.selected,
           dimmed: day.getMonth() !== first_day_in_month.getMonth(),
-          disabled: this.isDateOutOfRange(day)
+          disabled: this.isDateOutOfRange(day),
         };
         // Increment offset (advance one day in calendar)
         dayInMonthOffset++;

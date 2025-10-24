@@ -19,7 +19,7 @@ export class WiredDivider extends WiredBase {
           display: block;
           position: relative;
         }
-      `
+      `,
     ];
   }
 

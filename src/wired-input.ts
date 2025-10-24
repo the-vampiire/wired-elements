@@ -14,7 +14,7 @@ export class WiredInput extends WiredBase {
   @property({ type: String }) type = 'text';
   @property({ type: String }) autocomplete = '';
   @property({ type: String }) autocapitalize = '';
-  @property({ type: String }) autocorrect = '';
+  @property({ type: Boolean, reflect: true }) autocorrect = false;
   @property({ type: Boolean }) required = false;
   @property({ type: Boolean }) autofocus = false;
   @property({ type: Boolean }) readonly = false;
@@ -73,7 +73,7 @@ export class WiredInput extends WiredBase {
         input:focus + div path {
           stroke-width: 1.5;
         }
-      `
+      `,
     ];
   }
 
@@ -82,7 +82,7 @@ export class WiredInput extends WiredBase {
     <input name="${this.name}" type="${this.type}" placeholder="${this.placeholder}" ?disabled="${this.disabled}"
       ?required="${this.required}" autocomplete="${this.autocomplete}" ?autofocus="${this.autofocus}" minlength="${this.minlength}"
       maxlength="${this.maxlength}" min="${this.min}" max="${this.max}" step="${this.step}" ?readonly="${this.readonly}"
-      size="${this.size}" autocapitalize="${this.autocapitalize}" autocorrect="${this.autocorrect}" 
+      size="${this.size}" autocapitalize="${this.autocapitalize}" ?autocorrect="${this.autocorrect}"
       @change="${this.refire}" @input="${this.refire}">
     <div id="overlay">
       <svg></svg>

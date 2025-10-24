@@ -33,7 +33,7 @@ export class WiredLink extends WiredBase {
         a:focus path {
           stroke-opacity: 1;
         }
-      `
+      `,
     ];
   }
 
@@ -69,7 +69,7 @@ export class WiredLink extends WiredBase {
     const elev = Math.min(Math.max(1, this.elevation), 5);
     const s = {
       width: size[0],
-      height: size[1] - ((elev - 1) * 2)
+      height: size[1] - ((elev - 1) * 2),
     };
     for (let i = 0; i < elev; i++) {
       line(svg, 0, s.height + (i * 2) - 2, s.width, s.height + (i * 2) - 2, this.seed);

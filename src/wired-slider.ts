@@ -90,7 +90,7 @@ export class WiredSlider extends WiredBase {
         stroke: var(--wired-slider-knob-outline-color, #000);
         fill-opacity: 0.8;
       }
-      `
+      `,
     ];
   }
 

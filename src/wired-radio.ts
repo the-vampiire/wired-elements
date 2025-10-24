@@ -57,7 +57,7 @@ export class WiredRadio extends WiredBase {
       #container.focused {
         --wired-radio-default-swidth: 1.5;
       }
-      `
+      `,
     ];
   }
 

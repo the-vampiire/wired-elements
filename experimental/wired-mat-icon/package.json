@@ -31,7 +31,7 @@
     "url": "https://github.com/wiredjs/wired-elements/issues"
   },
   "dependencies": {
-    "lit-element": "^2.3.1",
+    "lit": "^3.1.0",
     "wired-icon": "^0.0.1"
   },
   "devDependencies": {

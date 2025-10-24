@@ -55,7 +55,7 @@ export class WiredTextarea extends WiredBase {
           padding: 10px;
           box-sizing: border-box;
         }
-      `
+      `,
     ];
   }
 

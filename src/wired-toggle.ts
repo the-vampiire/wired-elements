@@ -59,7 +59,7 @@ export class WiredToggle extends WiredBase {
       .knob.checked path.knobfill {
         stroke: var(--wired-toggle-on-color, rgb(63, 81, 181));
       }
-      `
+      `,
     ];
   }
 

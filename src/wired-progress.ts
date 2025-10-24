@@ -49,7 +49,7 @@ export class WiredProgress extends WiredBase {
         bottom: 0;
         pointer-events: none;
       }
-      `
+      `,
     ];
   }
 
@@ -108,7 +108,7 @@ export class WiredProgress extends WiredBase {
           [0, 0],
           [progWidth, 0],
           [progWidth, s.height],
-          [0, s.height]
+          [0, s.height],
         ], this.seed);
         this.svg!.appendChild(this.progBox);
         this.progBox.classList.add('progbox');

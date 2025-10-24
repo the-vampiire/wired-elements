@@ -31,7 +31,7 @@ export class WiredSpinner extends WiredBase {
           stroke-width: 2.8 !important;
           stroke-opacity: 1;
         }
-      `
+      `,
     ];
   }
 
@@ -55,7 +55,7 @@ export class WiredSpinner extends WiredBase {
     if (this.knob) {
       const position: Point = [
         Math.round(38 + 25 * Math.cos(this.value * Math.PI * 2)),
-        Math.round(38 + 25 * Math.sin(this.value * Math.PI * 2))
+        Math.round(38 + 25 * Math.sin(this.value * Math.PI * 2)),
       ];
       this.knob.style.transform = `translate3d(${position[0]}px, ${position[1]}px, 0) rotateZ(${Math.round(this.value * 360 * 2)}deg)`;
     }

@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators.js';
 import { WiredIcon } from './WiredIcon';
 
 // We separate the class from its registration as a custom element,

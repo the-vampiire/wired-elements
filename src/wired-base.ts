@@ -74,6 +74,6 @@ export function fireEvent(e: HTMLElement, name: string, detail?: any) {
   e.dispatchEvent(new CustomEvent(name, {
     composed: true,
     bubbles: true,
-    detail
+    detail,
   }));
 }

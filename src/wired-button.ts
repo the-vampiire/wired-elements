@@ -64,7 +64,7 @@ export class WiredButton extends WiredBase {
         button::-moz-focus-inner {
           border: 0;
         }
-      `
+      `,
     ];
   }
 
@@ -102,7 +102,7 @@ export class WiredButton extends WiredBase {
     const elev = Math.min(Math.max(1, this.elevation), 5);
     const s = {
       width: size[0] - ((elev - 1) * 2),
-      height: size[1] - ((elev - 1) * 2)
+      height: size[1] - ((elev - 1) * 2),
     };
     rectangle(svg, 0, 0, s.width, s.height, this.seed);
     for (let i = 1; i < elev; i++) {

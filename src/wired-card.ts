@@ -1,5 +1,5 @@
 import { WiredBase, BaseCSS, Point } from './wired-base';
-import { rectangle, line, hachureFill, } from './wired-lib';
+import { rectangle, line, hachureFill } from './wired-lib';
 import { css, TemplateResult, html, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -38,7 +38,7 @@ export class WiredCard extends WiredBase {
         path {
           stroke: var(--wired-card-background-fill, currentColor);
         }
-      `
+      `,
     ];
   }
 
@@ -95,14 +95,14 @@ export class WiredCard extends WiredBase {
     const elev = Math.min(Math.max(1, this.elevation), 5);
     const s = {
       width: size[0] - ((elev - 1) * 2),
-      height: size[1] - ((elev - 1) * 2)
+      height: size[1] - ((elev - 1) * 2),
     };
     if (this.fill && this.fill.trim()) {
       const fillNode = hachureFill([
         [2, 2],
         [s.width - 4, 2],
         [s.width - 2, s.height - 4],
-        [2, s.height - 4]
+        [2, s.height - 4],
       ], this.seed);
       fillNode.classList.add('cardFill');
       svg.style.setProperty('--wired-card-background-fill', this.fill.trim());

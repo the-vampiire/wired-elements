@@ -109,7 +109,7 @@ export class WiredVideo extends WiredBase {
           max-width: 200px;
           margin: 0 6px 0 auto;
         }
-      `
+      `,
     ];
   }
 

@@ -32,7 +32,7 @@ export class WiredTab extends WiredBase {
           position: relative;
           padding: 10px;
         }
-      `
+      `,
     ];
   }
 

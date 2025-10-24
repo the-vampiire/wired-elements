@@ -61,7 +61,7 @@ export class WiredFab extends WiredBase {
           opacity: 1;
           transform: scale(1.15);
         }
-      `
+      `,
     ];
   }
 

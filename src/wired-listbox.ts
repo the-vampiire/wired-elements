@@ -43,7 +43,7 @@ export class WiredListbox extends WiredBase {
       :host(.wired-horizontal) ::slotted(wired-item) {
         display: inline-block;
       }
-      `
+      `,
     ];
   }
 
@@ -133,7 +133,7 @@ export class WiredListbox extends WiredBase {
       if (selectedItem) {
         this.value = {
           value: selectedItem.value || '',
-          text: selectedItem.textContent || ''
+          text: selectedItem.textContent || '',
         };
       } else {
         this.value = undefined;
