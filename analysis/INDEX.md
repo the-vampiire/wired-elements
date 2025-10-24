@@ -4,29 +4,29 @@ This file tracks the progress of analyzing each wired-* component for React wrap
 
 | Component | Status | Notes |
 |------------|---------|--------|
-| wired-button | 🚫 | Not started |
-| wired-calendar | 🚫 | Not started |
-| wired-card | 🚫 | Not started |
-| wired-checkbox | 🚫 | Not started |
-| wired-combo | 🚫 | Not started |
-| wired-dialog | 🚫 | Not started |
-| wired-divider | 🚫 | Not started |
-| wired-fab | 🚫 | Not started |
-| wired-icon-button | 🚫 | Not started |
-| wired-image | 🚫 | Not started |
-| wired-input | 🚫 | Not started |
-| wired-item | 🚫 | Not started |
-| wired-link | 🚫 | Not started |
-| wired-listbox | 🚫 | Not started |
-| wired-progress-ring | 🚫 | Not started |
-| wired-progress | 🚫 | Not started |
-| wired-radio-group | 🚫 | Not started |
-| wired-radio | 🚫 | Not started |
-| wired-search-input | 🚫 | Not started |
-| wired-slider | 🚫 | Not started |
-| wired-spinner | 🚫 | Not started |
-| wired-tab | 🚫 | Not started |
-| wired-tabs | 🚫 | Not started |
-| wired-textarea | 🚫 | Not started |
-| wired-toggle | 🚫 | Not started |
-| wired-video | 🚫 | Not started |
+| wired-button | ✅ | Visual-only component; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-calendar | ✅ | Has internal value state, emits 'selected'; SSR-unsafe: window, getBoundingClientRect, navigator |
+| wired-card | ✅ | Visual-only container; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-checkbox | ✅ | Form control with checked state, emits 'change'; SSR-unsafe: ResizeObserver |
+| wired-combo | ✅ | Dropdown with selected state, emits 'selected'; SSR-unsafe: getBoundingClientRect |
+| wired-dialog | ✅ | Modal with open state; SSR-unsafe: wired-card uses ResizeObserver |
+| wired-divider | ✅ | Visual-only divider; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-fab | ✅ | Visual-only FAB; SSR-unsafe: getBoundingClientRect |
+| wired-icon-button | ✅ | Visual-only icon button; SSR-unsafe: getBoundingClientRect |
+| wired-image | ✅ | Visual-only image container; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-input | ✅ | Form control with value state, emits 'change', 'input'; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-item | ✅ | Selectable list item; SSR-unsafe: getBoundingClientRect |
+| wired-link | ✅ | Visual-only link; SSR-unsafe: getBoundingClientRect |
+| wired-listbox | ✅ | List container with selected state, emits 'selected'; SSR-unsafe: getBoundingClientRect |
+| wired-progress-ring | ✅ | Progress indicator with value state; SSR-unsafe: getBoundingClientRect |
+| wired-progress | ✅ | Progress bar with value state; SSR-unsafe: getBoundingClientRect |
+| wired-radio-group | ✅ | Radio group with selected state, emits 'selected'; SSR-safe |
+| wired-radio | ✅ | Radio button with checked state, emits 'change'; SSR-unsafe: ResizeObserver |
+| wired-search-input | ✅ | Search input with value state, emits 'change', 'input'; SSR-unsafe: getBoundingClientRect |
+| wired-slider | ✅ | Slider with value state, emits 'change'; SSR-unsafe: getBoundingClientRect |
+| wired-spinner | ✅ | Animated spinner; SSR-unsafe: requestAnimationFrame |
+| wired-tab | ✅ | Tab item; SSR-unsafe: ResizeObserver, getBoundingClientRect |
+| wired-tabs | ✅ | Tabs container with selected state; SSR-unsafe: requestAnimationFrame |
+| wired-textarea | ✅ | Textarea with value state, emits 'change', 'input'; SSR-unsafe: getBoundingClientRect |
+| wired-toggle | ✅ | Toggle switch with checked state, emits 'change'; SSR-unsafe: ResizeObserver |
+| wired-video | ✅ | Video player with controls; SSR-unsafe: ResizeObserver, getBoundingClientRect |
