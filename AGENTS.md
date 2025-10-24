@@ -1,0 +1,21 @@
+# AGENTS
+- **Install**: Run `npm install` from repo root (Node 16+ recommended).
+- **Build**: `npm run build` cleans `lib` then compiles with `tsc`.
+- **Type Check (single file)**: `npx tsc --noEmit src/wired-button.ts` for targeted validation.
+- **Lint**: `npx tslint -c tslint.json "src/**/*.ts"` to enforce repo linting.
+- **Lint (single file)**: `npx tslint -c tslint.json src/wired-button.ts`.
+- **Tests**: No automated suite; verify components manually via `examples/*.html`.
+- **Modules**: Project ships ES modules (`type: "module"`); include explicit extensions on relative imports.
+- **Imports**: Group internal relative modules before external packages; avoid default exports.
+- **Formatting**: Two-space indentation, semicolons, trailing commas on multiline literals, single quotes.
+- **Templates**: Use lit `html` and `css` tags for render output and scoped styles.
+- **Types**: Respect strict TypeScript flags; annotate class fields, method returns, and event payloads.
+- **Decorators**: Apply `@customElement`, `@property`, and `@query` from `lit/decorators.js`.
+- **Naming**: PascalCase classes, kebab-case element selectors, camelCase members, uppercase shared constants.
+- **State**: Expose reactive public API through decorated properties; keep internals `private` or `protected`.
+- **Events**: Emit DOM events with `fireEvent`; keep them composed and bubbling for consumer access.
+- **SVG Helpers**: Reuse primitives from `src/wired-lib.ts` rather than reimplementing roughjs logic.
+- **Styles**: Compose `static get styles()` to merge `BaseCSS` with component-specific lit CSS.
+- **Lifecycle**: Attach observers/listeners on first update and clean up in `disconnectedCallback`.
+- **Error Handling**: Guard DOM access (e.g., check `button`/`svg` exists) and gracefully no-op when APIs missing.
+- **Docs**: Refer to component specs in `docs/`; no Cursor or Copilot instruction files exist.
