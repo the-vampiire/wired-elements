@@ -4,6 +4,7 @@
 - Tag: `wired-checkbox`
 - Class: `WiredCheckbox`
 - Base: `WiredBase`
+- Inherits from: `WiredBase` (see `analysis/WIRED-BASE.md`). `WiredBase` supplies the shared rough-style rendering pipeline, fade-in behavior, and custom event plumbing.
 - Purpose: Sketch-style checkbox input with checkmark.
 
 ### 2. Reactive Props
@@ -30,6 +31,7 @@
 
 ### 6. Styling
 - Inherits `BaseCSS`, adds focus and disabled styles.
+- Includes `BaseCSS` from `wired-base`, unless otherwise noted. `BaseCSS` provides fade-in opacity transition, overlay positioning for SVG, default path stroke using `currentColor`, and hidden class.
 - Visual state depends on `checked` and `disabled`.
 - Host can be styled via className or color; internal styles live in shadow DOM.
 - Shadow DOM selectors: `:host`, `:host([disabled])`, `:host([disabled]) svg`, `#container`, `span`, `input`, `path`, `g path`, `#container.focused`.
@@ -41,6 +43,7 @@
 
 ### 7. SSR Notes
 - Browser-only (inherits from `WiredBase` which uses `ResizeObserver`).
+- Inherits browser-only redraw lifecycle from `WiredBase` (`ResizeObserver`, `getBoundingClientRect`).
 - Must be lazy-loaded in Next with `ssr: false`.
 
 ### 8. React Wrapper Surface
@@ -52,6 +55,7 @@ interface WiredCheckboxProps {
   style?: React.CSSProperties;
   onChange?: (detail: { checked: boolean }) => void;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredCheckboxElement>;
 }
 ```
 Ref → WiredCheckboxElement

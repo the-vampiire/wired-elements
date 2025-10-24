@@ -65,6 +65,7 @@ interface WiredCalendarProps {
   className?: string;
   style?: React.CSSProperties;
   onSelected?: (detail: { selected: string }) => void;
+  ref?: React.Ref<WiredCalendarElement>;
 }
 ```
 Ref → WiredCalendarElement

@@ -54,6 +54,7 @@ interface WiredComboProps {
   style?: React.CSSProperties;
   onSelected?: (detail: { selected: string | undefined }) => void;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredComboElement>;
 }
 ```
 Ref → WiredComboElement

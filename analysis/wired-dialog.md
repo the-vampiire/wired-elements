@@ -51,6 +51,7 @@ interface WiredDialogProps {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredDialogElement>;
 }
 ```
 Ref → WiredDialogElement

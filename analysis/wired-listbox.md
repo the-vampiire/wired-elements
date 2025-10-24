@@ -3,7 +3,7 @@
 ### 1. Identity
 - Tag: `wired-listbox`
 - Class: `WiredListbox`
-- Base: `WiredBase`
+- Base: `LitElement`
 - Purpose: Sketch-style listbox container for selectable items.
 
 ### 2. Reactive Props
@@ -54,6 +54,7 @@ interface WiredListboxProps {
   style?: React.CSSProperties;
   onSelected?: (detail: { selected: string | undefined }) => void;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredListboxElement>;
 }
 ```
 Ref → WiredListboxElement

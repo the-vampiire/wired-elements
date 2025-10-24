@@ -4,6 +4,7 @@
 - Tag: `wired-card`
 - Class: `WiredCard`
 - Base: `WiredBase`
+- Inherits from: `WiredBase` (see `analysis/WIRED-BASE.md`). `WiredBase` supplies the shared rough-style rendering pipeline, fade-in behavior, and custom event plumbing.
 - Purpose: Sketch-style card container with optional fill and elevation.
 
 ### 2. Reactive Props
@@ -27,6 +28,7 @@
 
 ### 6. Styling
 - Inherits `BaseCSS`, adds fill and stroke styles.
+- Includes `BaseCSS` from `wired-base`, unless otherwise noted. `BaseCSS` provides fade-in opacity transition, overlay positioning for SVG, default path stroke using `currentColor`, and hidden class.
 - Visual depth depends on `elevation`; fill affects background pattern.
 - Host can be styled via className or color; internal styles live in shadow DOM.
 - Shadow DOM selectors: `:host`, `path.cardFill`, `path`.
@@ -38,6 +40,7 @@
 
 ### 7. SSR Notes
 - Browser-only (uses `ResizeObserver` and `getBoundingClientRect()`).
+- Inherits browser-only redraw lifecycle from `WiredBase` (`ResizeObserver`, `getBoundingClientRect`).
 - Must be lazy-loaded in Next with `ssr: false`.
 
 ### 8. React Wrapper Surface
@@ -48,6 +51,7 @@ interface WiredCardProps {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredCardElement>;
 }
 ```
 Ref → WiredCardElement

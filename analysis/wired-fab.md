@@ -4,6 +4,7 @@
 - Tag: `wired-fab`
 - Class: `WiredFab`
 - Base: `WiredBase`
+- Inherits from: `WiredBase` (see `analysis/WIRED-BASE.md`). `WiredBase` supplies the shared rough-style rendering pipeline, fade-in behavior, and custom event plumbing.
 - Purpose: Sketch-style floating action button with circular fill.
 
 ### 2. Reactive Props
@@ -26,6 +27,7 @@
 
 ### 6. Styling
 - Inherits `BaseCSS`, adds circular button and icon styles.
+- Includes `BaseCSS` from `wired-base`, unless otherwise noted. `BaseCSS` provides fade-in opacity transition, overlay positioning for SVG, default path stroke using `currentColor`, and hidden class.
 - Visual state depends on `disabled`.
 - Host can be styled via className or color; internal styles live in shadow DOM.
 - Shadow DOM selectors: `:host`, `button`, `button[disabled]`, `button::-moz-focus-inner`, `button ::slotted(*)`, `path`, `button:focus ::slotted(*)`, `button:active ::slotted(*)`.
@@ -37,6 +39,7 @@
 
 ### 7. SSR Notes
 - Browser-only (uses `getBoundingClientRect()`).
+- Inherits browser-only redraw lifecycle from `WiredBase` (`ResizeObserver`, `getBoundingClientRect`).
 - Must be lazy-loaded in Next with `ssr: false`.
 
 ### 8. React Wrapper Surface
@@ -47,6 +50,7 @@ interface WiredFabProps {
   style?: React.CSSProperties;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredFabElement>;
 }
 ```
 Ref → WiredFabElement

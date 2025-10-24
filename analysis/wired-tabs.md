@@ -29,6 +29,7 @@
 
 ### 6. Styling
 - Inherits `BaseCSS`, adds bar and hidden styles.
+- Includes `BaseCSS` from `wired-base`, unless otherwise noted. `BaseCSS` provides fade-in opacity transition, overlay positioning for SVG, default path stroke using `currentColor`, and hidden class.
 - Visual state depends on `selected`.
 - Host can be styled via className or color; internal styles live in shadow DOM.
 - Shadow DOM selectors: `:host`, `::slotted(.hidden)`, `:host ::slotted(.hidden)`, `#bar`.
@@ -49,6 +50,7 @@ interface WiredTabsProps {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+  ref?: React.Ref<WiredTabsElement>;
 }
 ```
 Ref → WiredTabsElement

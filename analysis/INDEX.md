@@ -4,6 +4,7 @@ This file tracks the progress of analyzing each wired-* component for React wrap
 
 | Component | Status | Notes |
 |------------|---------|--------|
+| wired-base | ✅ | Abstract base. Controls redraw, theming via currentColor, browser-only subclasses |
 | wired-button | ✅ | Visual-only component; SSR-unsafe: ResizeObserver, getBoundingClientRect |
 | wired-calendar | ✅ | Has internal value state, emits 'selected'; SSR-unsafe: window, getBoundingClientRect, navigator |
 | wired-card | ✅ | Visual-only container; SSR-unsafe: ResizeObserver, getBoundingClientRect |
