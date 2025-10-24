@@ -17,6 +17,29 @@ These interface documents will later be used to:
 
 ---
 
+## Output Structure
+
+Agents must output each analyzed component as a **separate file** in `analysis/` named:
+
+[TAGNAME].md
+
+Example: `WIRED-BUTTON.md`, `WIRED-DIALOG.md`
+
+Additionally, an **index checklist file** named `INDEX.md` must be maintained.  
+It lists all discovered components and tracks progress for each (✅ analyzed / ⏳ pending / 🚫 skipped).
+
+Example:
+
+| Component | Status | Notes |
+|------------|---------|--------|
+| wired-button | ✅ | Complete |
+| wired-dialog | ⏳ | In progress |
+| wired-combo | 🚫 | Not started |
+
+---
+
+---
+
 ## Step-by-Step Protocol
 
 ### 1. Component Identity
@@ -34,6 +57,10 @@ Inspect all `@property(...)` declarations.
 For each:
 - **Name:** property name (e.g. `elevation`)
 - **Type:** TS primitive or union (`number`, `boolean`, `string`, etc.)
+
+> Agents must infer the **Type** directly in TypeScript syntax (`number`, `boolean`, etc.) based on `{ type: Number }` declarations.  
+> Do not preserve the Lit form `{ type: Number }`; always normalize to TS types for downstream code generation.
+
 - **Default value:** value assigned in class
 - **Reflect:** whether `{ reflect: true }` is set
 - **Description:** what visual or behavioral aspect it controls
@@ -48,6 +75,13 @@ For each:
 
 •	Keep the same name unless it’s confusing in React land or collides with common React semantics.
 •	If rename is proposed, document both names and the reason.
+
+> If a rename is proposed (e.g., `value` → `selectedValue`), record it in both:
+> - the **Reactive Props table** (React Name column), and  
+> - a new section titled **“Proposed API Changes”** at the bottom of the file, listing all renames with reasoning.
+>
+> Example entry:
+> - Rename `value` → `selectedValue`: improves clarity; avoids collision with native input value semantics.
 
 ---
 
@@ -252,5 +286,23 @@ SSR: browser-only
 5. Ensure language is descriptive but concise, suitable for automated wrapper generation later.
 
 Once every component has an interface document, the next phase (wrapper generation) can proceed automatically using these specs as input.
+
+---
+
+### Consistency Rules
+
+- Each component = one markdown file in the format `WIRED_[TAGNAME].md`.
+- All types must be written in TypeScript syntax, not Lit declaration syntax.
+- Any proposed renames or API shape adjustments must also appear in a “Proposed API Changes” table within that component’s markdown.
+- The global index (`WIRED_ELEMENTS_INDEX.md`) must be updated after every successful component analysis.
+
+---
+
+### Consistency Rules
+
+- Each component = one markdown file in the format `WIRED_[TAGNAME].md`.
+- All types must be written in TypeScript syntax, not Lit declaration syntax.
+- Any proposed renames or API shape adjustments must also appear in a “Proposed API Changes” table within that component’s markdown.
+- The global index (`WIRED_ELEMENTS_INDEX.md`) must be updated after every successful component analysis.
 
 ---
