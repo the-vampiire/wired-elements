@@ -44,6 +44,11 @@ For each:
 > `@property({ type: Number }) elevation = 1;`  
 > → name: `elevation`, type: number, default: 1, reflect: false, meaning: shadow depth (1–5), expose: yes
 
+•	Expose as React prop = “yes” if the property is declared with @property(...), controls visible state or behavior that a normal consumer would reasonably want to set, and is not purely bookkeeping. Expose = “no” for internal bookkeeping or lifecycle helpers.
+
+•	Keep the same name unless it’s confusing in React land or collides with common React semantics.
+•	If rename is proposed, document both names and the reason.
+
 ---
 
 ### 3. Imperative / Instance API
@@ -57,6 +62,12 @@ For each:
 
 > Example  
 > Method: `focus()` → focuses the internal `<button>` element → expose via ref: yes
+
+•	Expose via ref = “yes” if calling this method is a normal UI control action (focus(), show(), close(), etc.).
+•	Expose via ref = “no” if the method:
+	•	is lifecycle/internal (updated, wiredRender, attachResizeListener, etc.)
+	•	assumes DOM state that may not exist yet if called arbitrarily
+	•	mutates internal observers or rendering surfaces
 
 ---
 
@@ -73,6 +84,9 @@ For each event:
 
 > Example  
 > Fires: `fire('selected', { value })` → `onSelected?: (detail: { value: string }) => void`
+
+•	Treat any event fired via fire(...) / fireEvent(...) as custom, even if its name sounds native (e.g. "change"). These need to be documented and mapped to React callback props.
+•	Native browser events like click do not need mapping unless this component reimplements them via fire() with a custom detail.
 
 Native DOM events like `click`, `input`, and `change` **do not require explicit mapping**; React handles them automatically.
 
@@ -93,6 +107,12 @@ If yes:
 > - fires: `selected` event  
 > - current model: uncontrolled, value only changed internally
 
+•	Internal state keys managed by the element (e.g. open, value).
+•	Whether those stateful keys are exposed as reactive properties (parent can set them).
+•	Whether the component mutates them internally (uncontrolled behavior).
+•	Which events fire when they change (notification path up to React).
+•	Whether this looks like a form control (select, input, checkbox) or a display/control surface (dialog, tooltip, toast).
+
 ---
 
 ### 6. Styling Hooks and Behavior
@@ -106,6 +126,12 @@ Include:
 - **Theming knobs:** props that change visuals (e.g. `elevation`, `disabled`, `modal`)
 - **External styling hooks:** can the consumer safely apply Tailwind classes to host?
 
+•	Agents should document:
+	•	What’s hard-coded (padding, font-size, uppercase).
+	•	Whether visuals depend on reactive props (like elevation).
+	•	Any repeated styling patterns that look like they should become global tokens (size, tone, variant).
+	•	But agents should not invent new tokens. They should label them as “Potential theme knobs: … (not yet implemented).”
+
 Agents should not rewrite CSS, only document **where and how styling occurs**, and note potential **theme extension points** (e.g. adding `variant`, `tone`, `size`).
 
 ---
@@ -117,6 +143,13 @@ Look for:
 - `window`, `document`, `SVGSVGElement`, `getBoundingClientRect()`, `ResizeObserver`
 - Rough.js drawing calls during render
 - `customElements.define()` executed at module scope
+
+•	Mark browser-only if the component:
+	•	touches window, document, customElements in constructor or at module init,
+	•	measures layout (getBoundingClientRect, offsetWidth) during updated() or first render,
+	•	instantiates observers like ResizeObserver,
+	•	draws via roughjs into DOM immediately.
+•	Otherwise, if it appears safe (rare in this library, but possible for something very static), mark it as “likely SSR-safe”.
 
 If any are found:
 - Mark as **Browser-only**
